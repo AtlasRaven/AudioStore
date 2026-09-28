@@ -1,0 +1,35 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  application:
+    name: audiostore-api
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/audiostore?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Ho_Chi_Minh}
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+app:
+  cors-origin: ${FRONTEND_ORIGIN:http://localhost:5173}
+  bank:
+    name: ${BANK_NAME:Ngân hàng mẫu}
+    account: ${BANK_ACCOUNT:}
+    account-name: ${BANK_ACCOUNT_NAME:AudioStore}
+  jwt:
+    secret: ${JWT_SECRET:local-dev-secret-key-change-before-deployment-123456789}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-3.1-pro-preview}
+    timeout-ms: ${GEMINI_TIMEOUT_MS:12000}
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
